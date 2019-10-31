@@ -2,9 +2,9 @@ package com.usc.csci201x;
 
 public class DemoThread implements Runnable {
 
-    public int threadNumber = 0;
+    private int threadNumber;
 
-    public DemoThread(int threadNumber) {
+    DemoThread(int threadNumber) {
         this.threadNumber = threadNumber;
     }
 

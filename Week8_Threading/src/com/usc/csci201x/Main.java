@@ -19,11 +19,11 @@ public class Main {
         d0.start();
         d0.join();
         d1.start();
-        d2.start();
         d1.join();
+        d2.start();
         d2.join();
         b06.start();
-//        b06.interrupt();
+        b06.interrupt();
     }
 
     private static void threadExecutorDemo() {
@@ -31,12 +31,12 @@ public class Main {
         Thread d1 = new Thread(new DemoThread(1));
         Thread d2 = new Thread(new DemoThread(2));
         Thread b06 = new Thread(new BravoSixThread());
-        ExecutorService e = Executors.newFixedThreadPool(1);
+        ExecutorService e = Executors.newCachedThreadPool();
         e.execute(d0);
         e.execute(d1);
         e.execute(d2);
         e.execute(b06);
-        e.shutdown();
+        e.shutdownNow();
         while (!e.isTerminated()) {
             Thread.yield();
         }
